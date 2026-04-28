@@ -1,0 +1,20 @@
+{
+  "name": "knowledge-hub",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Central de Conhecimento - Notion + Excel coverage dashboard",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "sync": "node src/core/sync.js",
+    "demo": "node scripts/demo-sync.js"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.15",
+    "fastify": "^4.28.0",
+    "@fastify/static": "^7.0.4",
+    "xlsx": "^0.18.5",
+    "dotenv": "^16.4.5"
+  }
+}

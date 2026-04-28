@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Central de Conhecimento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/dashboard.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">⬡ KNOWLEDGE HUB</div>
+    <div class="header-right">
+      <span id="sync-time" class="sync-label">—</span>
+      <button id="btn-sync" class="btn-sync">↻ Sincronizar</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Métricas topo -->
+    <section class="metrics-grid">
+      <div class="metric-card accent">
+        <div class="metric-value" id="m-coverage">—%</div>
+        <div class="metric-label">Cobertura Geral</div>
+        <div class="coverage-bar"><div class="coverage-fill" id="coverage-fill"></div></div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value" id="m-total">—</div>
+        <div class="metric-label">Endpoints no Excel</div>
+      </div>
+      <div class="metric-card ok">
+        <div class="metric-value" id="m-documented">—</div>
+        <div class="metric-label">Documentados</div>
+      </div>
+      <div class="metric-card danger">
+        <div class="metric-value" id="m-undocumented">—</div>
+        <div class="metric-label">Sem documentação</div>
+      </div>
+      <div class="metric-card warn">
+        <div class="metric-value" id="m-orphaned">—</div>
+        <div class="metric-label">Órfãos no Notion</div>
+      </div>
+    </section>
+
+    <!-- Busca -->
+    <section class="search-section">
+      <div class="search-box">
+        <span class="search-icon">⌕</span>
+        <input type="text" id="search-input" placeholder="Buscar endpoint ou serviço..." autocomplete="off" />
+        <kbd>Enter</kbd>
+      </div>
+      <div id="search-results" class="search-results hidden"></div>
+    </section>
+
+    <!-- Por serviço -->
+    <section class="services-section">
+      <h2 class="section-title">Cobertura por Serviço <span class="badge warn">piores primeiro</span></h2>
+      <div id="services-list" class="services-list">
+        <div class="loading">Carregando…</div>
+      </div>
+    </section>
+
+    <!-- Itens não documentados -->
+    <section class="undoc-section">
+      <h2 class="section-title">Endpoints sem documentação <span class="badge danger" id="undoc-count"></span></h2>
+      <div class="filter-row">
+        <input type="text" id="filter-service" placeholder="Filtrar por serviço..." />
+        <input type="text" id="filter-endpoint" placeholder="Filtrar por endpoint..." />
+      </div>
+      <div id="undoc-table-wrap">
+        <table id="undoc-table">
+          <thead><tr>
+            <th>Serviço</th><th>Endpoint</th><th>Método</th><th>Match parcial?</th>
+          </tr></thead>
+          <tbody id="undoc-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>
